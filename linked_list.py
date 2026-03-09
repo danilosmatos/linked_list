@@ -44,3 +44,25 @@ class ListaLigada:
             current = current.next
         
         print(f"Valor {value} não encontrado na lista.")
+    
+    def search(self, value):
+        current = self.head
+        index = 0
+        while current:
+            if current.data == value:
+                return f"Valor {value} encontrado na posição {index}."
+            current = current.next
+            index += 1
+        return f"Valor {value} não encontrado."
+
+    def display(self):
+        if not self.head:
+            print("Lista vazia.")
+            return
+        
+        current = self.head
+        elements = []
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        print(" -> ".join(elements) + " -> None")

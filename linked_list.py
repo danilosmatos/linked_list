@@ -14,25 +14,33 @@ class ListaLigada:
 
     def insert_end(self,data):
         new_node = Node(data)
+        # Se não tiver nada na lista
         if not self.head:
             self.head = new_node
             return
+        # Se tiver
         old_node = self.head
         while old_node.next:
             old_node = old_node.next
         old_node.next = new_node
 
-    def remove_data(self, valor):
-        atual = self.head
-        last = None
+    def remove(self, value):
+        # A lista está vazia
+        if not self.head:
+            print("Lista vazia.")
+            return
 
-        while atual:
-            if atual.dado == valor:
-                if anterior:
-                    anterior.proximo = atual.proximo
-                else:
-                    self.head = atual.proximo
-                return True  # Removido com sucesso
-            anterior = atual
-            atual = atual.proximo
-        return False  # Valor não encontrado
+        # O elemento a ser removido é a head
+        if self.head.data == value:
+            self.head = self.head.next
+            return
+
+        # Ta em outro lugar da lista
+        current = self.head
+        while current.next:
+            if current.next.data == value:
+                current.next = current.next.next
+                return
+            current = current.next
+        
+        print(f"Valor {value} não encontrado na lista.")
